@@ -198,7 +198,7 @@ print(answer)
 ## numguess
 ```python
 username = input("Hi there, What's your name?? ")
-guess = eval(input("Hi, "+ username + "guess the number: "))
+guess = int(input("Hi, "+ username + "guess the number: "))
 
 if guess == answer:
 	print("Correct! The answer was ", str(answer))
@@ -272,7 +272,7 @@ for i in range(1, num):
 	elif i % 3 == 0:
 		print("fizz")
 	elif i % 5 == 0:
-		print("fizz")
+		print("buzz")
 	else:
 		print(i)
 ```
@@ -287,7 +287,7 @@ answer = random.randint(1,100)
 username = input("Hi there, What's your name?? ")
 
 while True:
-	guess = eval(input("Hi, "+ username + "guess the 
+	guess = int(input("Hi, "+ username + "guess the 
     number: "))
 
 	if guess == answer:
@@ -340,90 +340,6 @@ y = int(input("Is leap?? "))
 print(is_leap(y))
 
 ```
-
----
-## function : 변수의 유효 범위  when immutable
-```python
-변경 불가능 변수, 즉, 정수 상수, 문자열, 튜플 등
-
-함수를 벗어나면 유효하지 않다(call by value)
-
-```
-
----
-## function : 변수의 유효 범위  when immutable
-```python
-a = 10
-b = 5
-
-def func(a, b):
-    print("a = {0}, b = {1}  before change in func".format(a, b)) 
-    a, b = b, a
-    print("a = {0}, b = {1}  after change in func".format(a, b)) 
-
-print("a = {0}, b = {1} before".format(a, b))
-print("\n")
-func(a, b)
-print("\n")
-print("a = {0}, b = {1} after".format(a, b))
-
-```
-
-
----
-## function : 변수의 유효 범위 when mutable
-```python
-변경가능 변수, 즉 list, dictionary 등에서
-
-1. 함수 내에서 기존 list를 수정만 하는 경우
-함수를 벗어나도 계속 유효(즉, call by reference)
-
-2. 함수 내에서 새로운 list를 참조하는 경우
-함수를 벗어나면 유효하지 않다(즉, call by value)
-
-```
-
----
-## function : 변수의 유효 범위 when mutable
-```python
-# 기존 list를 변경만 한다
-def func(li):
-    print("first li in func1 li = ", id(li))
-    li[2] = 15
-    li.remove(2)
-    del li[0]
-    li.append([11, 12, 13])
-    print("second li in func1 li = ", id(li))
-```
-
----
-## function : 변수의 유효 범위 when mutable
-```python
-# 함수 안에서 새로운 list를 참조
-def func2(li):
-    print("first li in func2 li = ", id(li))
-    li = [11, 12, 13]
-    print("second li in func2 li = ", id(li))
-```
-
----
-## function : 변수의 유효 범위 when mutable
-```python
-a = [1, 2, 3, 4]
-
-print("before func  --> a = ", id(a))
-print("\n")
-
-func(a)
-#func2(a)
-
-print("\n")
-print("after func --> a = ", id(a))
-
-print(a)
-
-```
-
 ---
 ## numguess with function
 
